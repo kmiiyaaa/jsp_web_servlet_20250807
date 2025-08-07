@@ -43,9 +43,11 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("welcome.jsp");
 		} else {
 			//response.sendRedirect("loginFail.jsp");
-			request.setAttribute("fid",id);  // 잘못된 id값
-			request.getRequestDispatcher("loginFail.jsp").forward(request, response);		
+			// request.setAttribute("fid",id);  // 잘못된 id값
+			request.setAttribute("errorMsg", "아이디 또는 비밀번호가 잘못되었습니다. 다시확인해주세요.");
+			request.getRequestDispatcher("login.jsp").forward(request, response);		
 			//request에 담긴 fid값 담아서 간다
+			
 		}
 		
 	}
