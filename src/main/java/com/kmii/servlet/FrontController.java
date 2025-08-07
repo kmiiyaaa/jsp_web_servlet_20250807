@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kmii.dto.BoardDto;
+import com.kmii.dto.MemberDto;
 
 /**
  * Servlet implementation class FrontController
@@ -54,7 +55,7 @@ public class FrontController extends HttpServlet {
 		//uri-con 해주면 원하는 - /loginOk.do 추출 가능!
 		String command = uri.substring(con.length());   // 컨텍스트 패스의 길이인덱스 부터 끝까지 추출
 		System.out.println("클라이언트의 요청" + command);  // /loginOk.do  추출 
-		HttpSession session = request.getSession(); // 세션을 선언(생성) , HttpSession는 인스턴스라 객체 만들지 못한다. - 그 안에 들어있는 session빼서 쓴다
+		HttpSession session = null; // 세션을 선언(생성) , HttpSession는 인스턴스라 객체 만들지 못한다. - 그 안에 들어있는 session빼서 쓴다
 		
 		String viewPage = "";  // 실제 클라이언트에게 전송될 jsp파일의 이름이 저장될 변수
 		
@@ -64,8 +65,8 @@ public class FrontController extends HttpServlet {
 			
 			
 		if(mid.equals("tiger") && mpw.equals("12345")) {
-			
-			session.setAttribute("sid", "mid");  // 세션에 id값 올리기 -> 로그인 상태로 변경
+			session = request.getSession();  //세션 생성(선언)
+			session.setAttribute("sid", mid);  // 세션에 id값 올리기 -> 로그인 상태로 변경
 			//response.sendRedirect("welcome.jsp");  강제이동만 가능, request객체의 값을 가져가지 못함
 			request.setAttribute("mid", mid);
 			viewPage = "welcome.jsp";  // 로그인 성공 후 이동할 jsp설정
@@ -74,6 +75,8 @@ public class FrontController extends HttpServlet {
 			viewPage = "login.jsp";
 		
 		}  else if (command.equals("/welcome.do")) {  //welcome.jsp로 이동
+			session = request.getSession();
+			request.setAttribute("mid", (String)session.getAttribute("sid"));
 			viewPage = "welcome.jsp";
 		
 		}  else if (command.equals("/logout.do")) {
@@ -97,7 +100,20 @@ public class FrontController extends HttpServlet {
 			viewPage = "boardList.jsp";
 			
 			
-		
+		} else if (command.equals("/member.do")) {  
+			
+			List<MemberDto> memberList = new ArrayList<MemberDto>();
+			
+			memberList.add(new MemberDto("tiger" , "홍길동" , "17", "2025-03-01"));
+			memberList.add(new MemberDto("lion" , "김유신" , "19", "2025-04-09"));
+			memberList.add(new MemberDto("blackcat" , "이순신" , "21", "2025-04-11"));
+			memberList.add(new MemberDto("whitedog" , "강감찬" , "27", "2025-05-05"));
+			memberList.add(new MemberDto("redtiger" , "이몽룡" , "31", "2025-06-20"));
+			
+			request.setAttribute("memberList", memberList);
+			
+			viewPage = "memberList.jsp";
+			
 		} else {  // 로그인 실패
 			System.out.println("로그인실패"); 
 			

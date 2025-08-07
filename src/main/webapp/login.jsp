@@ -16,7 +16,7 @@
 		비밀번호 : <input type="text" name="mpw"><br><br>
 		<input type="submit" value="로그인">
 	</form>
-	<hr>
+
 	
 	<!-- 로그인 실패 시 출력될 메세지 -->
 	

@@ -25,7 +25,9 @@
 	<hr>
 	<h3>[${mid}]님 환영합니다!</h3>
 	<hr>
-	<a href="freeboard.do">게시판보기</a>
+	<a href="freeboard.do">게시판 보기</a>
+	<hr>
+	<a href="member.do">회원 목록 보기</a>
 	<hr>
 	<a href="logout.do">로그아웃</a>
 	
