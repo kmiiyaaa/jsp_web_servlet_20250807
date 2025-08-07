@@ -14,11 +14,11 @@ import java.io.IOException;
  */
 @WebServlet("/loginOk")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 1L; 
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//System.out.println("로그인 호출 <br>");
+		System.out.println(".do 호출");
 		String id =	request.getParameter("id");
 		//System.out.println("login.jsp에서 넘겨 받은 id값 :" + id);
 		String pw = request.getParameter("pw");
@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			//response.sendRedirect("loginFail.jsp");
 			// request.setAttribute("fid",id);  // 잘못된 id값
-			request.setAttribute("errorMsg", "아이디 또는 비밀번호가 잘못되었습니다. 다시확인해주세요.");
+			request.setAttribute("errorMsg", "아이디 또는 비밀번호가 잘못되었습니다. 다시확인해주세요.");  //request객체에 실려온다.
 			request.getRequestDispatcher("login.jsp").forward(request, response);		
 			//request에 담긴 fid값 담아서 간다
 			
@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("post방식으로 받음");
 		doGet(request, response);
 	}
 
