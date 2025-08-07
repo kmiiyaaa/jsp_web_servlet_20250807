@@ -17,9 +17,12 @@
 		<input type="submit" value="로그인">
 	</form>
 	<hr>
+	
 	<!-- 로그인 실패 시 출력될 메세지 -->
+	
 	<c:if test="${not empty errorMsg}">
 		<h3 style="color:red;">${errorMsg }</h3>
 	</c:if>
+
 </body>
 </html>
