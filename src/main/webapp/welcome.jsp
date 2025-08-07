@@ -17,7 +17,15 @@
 		 --%>
 		 
 		 
-		<h3> [${sessionScope.id}]님 로그인 환영합니다. </h3>
-
+		 <%
+			if(session.getAttribute("sid") == null) {
+				response.sendRedirect("login.do");
+			};
+		%>
+		 
+		 
+		<h2>로그인 성공</h2>
+	<hr>
+	<h3>[${sessionScope.sid }]님 환영합니다!</h3>
 </body>
 </html>

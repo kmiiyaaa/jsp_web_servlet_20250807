@@ -11,16 +11,15 @@
 
 	<h2>회원 로그인</h2>
 	<hr>
-	<form action="loginOk" method="post">
-			아이디: <input type="text" name = "id"><br><br>
-			비밀번호: <input type="text" name = "pw"><br><br>
-			<input type="submit" value = "로그인">
-	
+	<form action="loginOk.do" method="post">
+		아이디 : <input type="text" name="mid"><br><br>
+		비밀번호 : <input type="text" name="mpw"><br><br>
+		<input type="submit" value="로그인">
 	</form>
 	<hr>
 	<!-- 로그인 실패 시 출력될 메세지 -->
-	<c:if test = "${not empty errorMsg}">
-		<h4 style="color:red"> ${errorMsg}</h4>
+	<c:if test="${not empty errorMsg}">
+		<h3 style="color:red;">${errorMsg }</h3>
 	</c:if>
 </body>
 </html>
