@@ -51,8 +51,8 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI(); //사용자가 요청한 URI
 		//System.out.println(uri);  // uri는 서버주소 뺀 값 : /jsp_webServlet_20250807/loginOk.do
 		String con = request.getContextPath();  // 컨텍스트 패스 가져오기
-		//System.out.println(con);   // /jsp_webServlet_20250807
-		//uri-con 해주면 원하는 - /loginOk.do 추출 가능!
+		                                        //System.out.println(con);   // /jsp_webServlet_20250807
+		                                        //uri-con 해주면 원하는 - /loginOk.do 추출 가능!
 		String command = uri.substring(con.length());   // 컨텍스트 패스의 길이인덱스 부터 끝까지 추출
 		System.out.println("클라이언트의 요청" + command);  // /loginOk.do  추출 
 		HttpSession session = null; // 세션을 선언(생성) , HttpSession는 인스턴스라 객체 만들지 못한다. - 그 안에 들어있는 session빼서 쓴다
@@ -100,7 +100,7 @@ public class FrontController extends HttpServlet {
 			viewPage = "boardList.jsp";
 			
 			
-		} else if (command.equals("/member.do")) {  
+		} else if (command.equals("/member.do")) {   
 			
 			List<MemberDto> memberList = new ArrayList<MemberDto>();
 			
